@@ -25,6 +25,7 @@ class _InputPageState extends State<InputPage> {
         backgroundColor: kPrimaryColor,
       ),
       body: Column(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
           Expanded(
               child: Row(

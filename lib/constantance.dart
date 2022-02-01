@@ -14,11 +14,11 @@ const kTextTheme = TextTheme(
 
 const kLabelTextStyle = TextStyle(
   color: Colors.white,
-  fontSize: 24.0,
+  fontSize: 18.0,
 );
 
 const kNumberTextStyle =
-    TextStyle(fontSize: 60.0, color: Colors.white, fontWeight: FontWeight.w900);
+    TextStyle(fontSize: 50.0, color: Colors.white, fontWeight: FontWeight.w900);
 
 enum Gender {
   male,

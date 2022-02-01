@@ -1,37 +1,53 @@
 import 'package:flutter/material.dart';
 import 'constantance.dart';
 
-class HeightCard extends StatelessWidget {
+class HeightCard extends StatefulWidget {
   const HeightCard({
     Key? key,
   }) : super(key: key);
 
   @override
+  State<HeightCard> createState() => _HeightCardState();
+}
+
+class _HeightCardState extends State<HeightCard> {
+  int height = 180;
+
+  @override
   Widget build(BuildContext context) {
     return Column(
-      crossAxisAlignment: CrossAxisAlignment.stretch,
       mainAxisAlignment: MainAxisAlignment.center,
-      children: const [
-        Text(
+      children: [
+        const Text(
           'HEIGHT',
           style: kLabelTextStyle,
-          textAlign: TextAlign.center,
         ),
-        SizedBox(
-          height: 15.0,
+        Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.baseline,
+          textBaseline: TextBaseline.alphabetic,
+          children: [
+            Text(
+              height.toString(),
+              style: kNumberTextStyle,
+            ),
+            const Text(
+              'cm',
+              style: kLabelTextStyle,
+            ),
+          ],
         ),
-        Text(
-          '180',
-          style: kNumberTextStyle,
-          textAlign: TextAlign.center,
-        ),
-        SizedBox(
-          height: 13.0,
-        ),
-        SizedBox(
-          height: 2.0,
-          width: double.infinity,
-        ),
+        Slider(
+            value: height.toDouble(),
+            min: 120.0,
+            max: 220.0,
+            activeColor: kBottomButtonColor,
+            inactiveColor: Colors.white10,
+            onChanged: (double newValue) {
+              setState(() {
+                height = newValue.round();
+              });
+            }),
       ],
     );
   }
