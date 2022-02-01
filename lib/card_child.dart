@@ -10,13 +10,14 @@ class ChildCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(
+      mainAxisAlignment: MainAxisAlignment.center,
       children: [
         Icon(
           icon,
           size: 80.0,
         ),
-        SizedBox(
-          height: 15.0,
+        const SizedBox(
+          height: kSizedBoxHeight,
         ),
         Text(
           label.toString(),
