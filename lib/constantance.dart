@@ -9,3 +9,8 @@ const kTextTheme = TextTheme(
     color: Colors.white,
   ),
 );
+
+const kLabelTextStyle = TextStyle(
+  color: Colors.white,
+  fontSize: 24.0,
+);
