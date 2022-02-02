@@ -1,3 +1,6 @@
+// ignore_for_file: prefer_const_constructors
+
+import 'package:bmi_calculator/weight.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'constantance.dart';
@@ -5,6 +8,7 @@ import 'card_child.dart';
 import 'reuseable_card.dart';
 import 'height_card.dart';
 import 'bottom_button.dart';
+import 'age.dart';
 
 class InputPage extends StatefulWidget {
   const InputPage({Key? key}) : super(key: key);
@@ -78,10 +82,16 @@ class _InputPageState extends State<InputPage> {
             child: Row(
               children: [
                 Expanded(
-                  child: ReUseable(),
+                  child: ReUseable(
+                    color: kActiveColor,
+                    cardChild: Weight(),
+                  ),
                 ),
                 Expanded(
-                  child: ReUseable(),
+                  child: ReUseable(
+                    color: kActiveColor,
+                    cardChild: Age(),
+                  ),
                 ),
               ],
             ),
