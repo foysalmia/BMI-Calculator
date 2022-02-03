@@ -1,14 +1,13 @@
 // ignore_for_file: prefer_const_constructors
 
 import 'package:bmi_calculator/calculator_branin.dart';
-import 'package:bmi_calculator/components/weight.dart';
+import '../components/rounded_button.dart';
 import 'package:bmi_calculator/screens/result_page.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import '../constantance.dart';
 import '../components/card_child.dart';
 import '../components/reuseable_card.dart';
-import '../components/height_card.dart';
 import '../components/bottom_button.dart';
 import '../components/age.dart';
 
@@ -79,8 +78,40 @@ class _InputPageState extends State<InputPage> {
           Expanded(
             child: ReUseable(
               color: kActiveColor,
-              cardChild: HeightCard(
-                height: height,
+              cardChild: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  const Text(
+                    'HEIGHT',
+                    style: kLabelTextStyle,
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.baseline,
+                    textBaseline: TextBaseline.alphabetic,
+                    children: [
+                      Text(
+                        height.toString(),
+                        style: kNumberTextStyle,
+                      ),
+                      const Text(
+                        'cm',
+                        style: kLabelTextStyle,
+                      ),
+                    ],
+                  ),
+                  Slider(
+                      value: height.toDouble(),
+                      min: 120.0,
+                      max: 220.0,
+                      activeColor: kBottomButtonColor,
+                      inactiveColor: Colors.white10,
+                      onChanged: (double newValue) {
+                        setState(() {
+                          height = newValue.round();
+                        });
+                      }),
+                ],
               ),
             ),
           ),
@@ -90,8 +121,44 @@ class _InputPageState extends State<InputPage> {
                 Expanded(
                   child: ReUseable(
                     color: kActiveColor,
-                    cardChild: Weight(
-                      weight: weight,
+                    cardChild: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        const Text(
+                          'WEIGHT',
+                          style: kLabelTextStyle,
+                        ),
+                        Text(
+                          weight.toString(),
+                          style: kNumberTextStyle,
+                        ),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            RoundedButton(
+                              icon: FontAwesomeIcons.minus,
+                              onClick: () {
+                                setState(() {
+                                  if (weight > 0) {
+                                    weight--;
+                                  }
+                                });
+                              },
+                            ),
+                            const SizedBox(
+                              width: 15.0,
+                            ),
+                            RoundedButton(
+                              icon: FontAwesomeIcons.plus,
+                              onClick: () {
+                                setState(() {
+                                  weight++;
+                                });
+                              },
+                            ),
+                          ],
+                        ),
+                      ],
                     ),
                   ),
                 ),
