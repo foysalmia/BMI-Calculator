@@ -20,6 +20,26 @@ const kLabelTextStyle = TextStyle(
 const kNumberTextStyle =
     TextStyle(fontSize: 50.0, color: Colors.white, fontWeight: FontWeight.w900);
 
+const kResutlHeadline = TextStyle(
+  color: Colors.white,
+  fontSize: 35.0,
+  fontWeight: FontWeight.w800,
+);
+
+const kResultString = TextStyle(
+  color: Colors.greenAccent,
+  fontSize: 24,
+  letterSpacing: 2.0,
+);
+
+const kResultNumber = TextStyle(
+  fontSize: 100,
+  color: Colors.white,
+  fontWeight: FontWeight.w900,
+);
+
+const kResultFeedBack = TextStyle(color: Colors.white, fontSize: 18);
+
 enum Gender {
   male,
   female,

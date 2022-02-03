@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'constantance.dart';
+import '../constantance.dart';
 import 'rounded_button.dart';
 
 class Age extends StatefulWidget {
@@ -30,7 +30,9 @@ class _AgeState extends State<Age> {
               icon: FontAwesomeIcons.minus,
               onClick: () {
                 setState(() {
-                  age--;
+                  if (age > 0) {
+                    age--;
+                  }
                 });
               },
             ),

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'constantance.dart';
+import '../constantance.dart';
 
 class ChildCard extends StatelessWidget {
   final IconData? icon;

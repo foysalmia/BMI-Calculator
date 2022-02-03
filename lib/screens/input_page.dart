@@ -1,14 +1,16 @@
 // ignore_for_file: prefer_const_constructors
 
-import 'package:bmi_calculator/weight.dart';
+import 'package:bmi_calculator/calculator_branin.dart';
+import 'package:bmi_calculator/components/weight.dart';
+import 'package:bmi_calculator/screens/result_page.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'constantance.dart';
-import 'card_child.dart';
-import 'reuseable_card.dart';
-import 'height_card.dart';
-import 'bottom_button.dart';
-import 'age.dart';
+import '../constantance.dart';
+import '../components/card_child.dart';
+import '../components/reuseable_card.dart';
+import '../components/height_card.dart';
+import '../components/bottom_button.dart';
+import '../components/age.dart';
 
 class InputPage extends StatefulWidget {
   const InputPage({Key? key}) : super(key: key);
@@ -19,6 +21,8 @@ class InputPage extends StatefulWidget {
 
 class _InputPageState extends State<InputPage> {
   Gender? selectedGender;
+  int height = 180;
+  int weight = 40;
 
   @override
   Widget build(BuildContext context) {
@@ -75,7 +79,9 @@ class _InputPageState extends State<InputPage> {
           Expanded(
             child: ReUseable(
               color: kActiveColor,
-              cardChild: HeightCard(),
+              cardChild: HeightCard(
+                height: height,
+              ),
             ),
           ),
           Expanded(
@@ -84,7 +90,9 @@ class _InputPageState extends State<InputPage> {
                 Expanded(
                   child: ReUseable(
                     color: kActiveColor,
-                    cardChild: Weight(),
+                    cardChild: Weight(
+                      weight: weight,
+                    ),
                   ),
                 ),
                 Expanded(
@@ -96,7 +104,22 @@ class _InputPageState extends State<InputPage> {
               ],
             ),
           ),
-          const BottomButton(),
+          BottomButton(
+              tittle: 'CALCULATE YOUR BMI',
+              onPress: () {
+                BmiBrain brain = BmiBrain(height: height, weight: weight);
+
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => ResultCard(
+                      result: brain.getBmi(),
+                      label: brain.getResult(),
+                      feedback: brain.feedback(),
+                    ),
+                  ),
+                );
+              }),
         ],
       ),
     );

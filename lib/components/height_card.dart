@@ -1,17 +1,16 @@
 import 'package:flutter/material.dart';
-import 'constantance.dart';
+import '../constantance.dart';
 
 class HeightCard extends StatefulWidget {
-  const HeightCard({
-    Key? key,
+   HeightCard({
+    Key? key,required this.height
   }) : super(key: key);
-
+  int height;
   @override
   State<HeightCard> createState() => _HeightCardState();
 }
 
 class _HeightCardState extends State<HeightCard> {
-  int height = 180;
 
   @override
   Widget build(BuildContext context) {
@@ -28,7 +27,7 @@ class _HeightCardState extends State<HeightCard> {
           textBaseline: TextBaseline.alphabetic,
           children: [
             Text(
-              height.toString(),
+              widget.height.toString(),
               style: kNumberTextStyle,
             ),
             const Text(
@@ -38,14 +37,14 @@ class _HeightCardState extends State<HeightCard> {
           ],
         ),
         Slider(
-            value: height.toDouble(),
+            value: widget.height.toDouble(),
             min: 120.0,
             max: 220.0,
             activeColor: kBottomButtonColor,
             inactiveColor: Colors.white10,
             onChanged: (double newValue) {
               setState(() {
-                height = newValue.round();
+                widget.height = newValue.round();
               });
             }),
       ],

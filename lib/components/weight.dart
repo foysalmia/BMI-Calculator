@@ -1,19 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'constantance.dart';
+import '../constantance.dart';
 import 'rounded_button.dart';
 
 class Weight extends StatefulWidget {
-  const Weight({ Key? key }) : super(key: key);
+  Weight({Key? key, required this.weight}) : super(key: key);
+  int weight;
 
   @override
   _WeightState createState() => _WeightState();
 }
 
 class _WeightState extends State<Weight> {
-
-  int weight = 40;
-
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -24,7 +22,7 @@ class _WeightState extends State<Weight> {
           style: kLabelTextStyle,
         ),
         Text(
-          weight.toString(),
+          widget.weight.toString(),
           style: kNumberTextStyle,
         ),
         Row(
@@ -34,7 +32,9 @@ class _WeightState extends State<Weight> {
               icon: FontAwesomeIcons.minus,
               onClick: () {
                 setState(() {
-                  weight--;
+                  if (widget.weight > 0) {
+                    widget.weight--;
+                  }
                 });
               },
             ),
@@ -45,7 +45,7 @@ class _WeightState extends State<Weight> {
               icon: FontAwesomeIcons.plus,
               onClick: () {
                 setState(() {
-                  weight++;
+                  widget.weight++;
                 });
               },
             ),
